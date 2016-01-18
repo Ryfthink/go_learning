@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 // 主要介绍的方法:len() cap() append() copy() make()
 func main() {
@@ -21,6 +22,10 @@ func main() {
   	// 4. append and copy slice
   	fmt.Println("\nappend and copy slice")
   	sliceAppendCopy()
+
+	fmt.Println("\n多维")
+  	// 5.cttt
+  	cttt()
 }
 
 // sub slice
@@ -78,4 +83,28 @@ func sliceAppendCopy(){
 // len() and cap() functions
 func printSlice(x []int){
    fmt.Printf("len=%d cap=%d slice=%v\n",len(x),cap(x),x)
+}
+
+// Create a tic-tac-toe board.
+func cttt(){
+	game := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// The players take turns.
+	game[0][0] = "X"
+	game[2][2] = "O"
+	game[2][0] = "X"
+	game[1][0] = "O"
+	game[0][2] = "X"
+
+	printBoard(game)
+}
+
+func printBoard(s [][]string) {
+	for i := 0; i < len(s); i++ {
+		fmt.Printf("%s\n", strings.Join(s[i], " "))
+	}
 }

@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "math"
 
 func main() {
 	var a int
@@ -47,7 +48,22 @@ func main() {
 		a++
 	}
 
+	// 5.
+	fmt.Println(Sqrt(2.0))
+	fmt.Println("Math.sqrt(2)  ",math.Sqrt(2.0))
 
+}
 
-
+// 牛顿法求开平方
+func Sqrt(x float64) float64 {
+	z := 1.0
+	for {
+		tmp := z - (z*z-x)/(2*z)
+		fmt.Println(tmp)
+		if tmp == z || math.Abs(tmp-z) < 0.000000000001 {
+			break
+		}
+		z = tmp
+	}
+	return z
 }
